@@ -96,7 +96,7 @@ Solo builder — full-stack development, smart contract, AI integration, UI/UX d
 
 - **Live App:** https://personal-cfo-agent.vercel.app
 - **Demo Video:** https://youtu.be/Ifi11L_I2Tw
-- **GitHub:** https://github.com/YOUR_USERNAME/personal-cfo-agent
+- **GitHub:** https://github.com/Osiyomeoh/cfo
 - **Contract:** https://mantlescan.xyz/address/0x33b0BF3eCac3A9142065C57B8F8E9C5368e114e5
 - **Sourcify:** https://repo.sourcify.dev/contracts/full_match/5000/0x33b0BF3eCac3A9142065C57B8F8E9C5368e114e5/
 

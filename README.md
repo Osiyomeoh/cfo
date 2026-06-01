@@ -91,7 +91,7 @@ This creates an **immutable reputation score** — higher executions = higher tr
 ### Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/personal-cfo-agent
+git clone https://github.com/Osiyomeoh/cfo
 cd personal-cfo-agent
 npm install
 ```
