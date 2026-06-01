@@ -1,0 +1,939 @@
+/* Bloomberg / Refinitiv terminal aesthetic — dark-first, dense, data-rich */
+
+/* ─── Dark theme (default / Bloomberg night) ─── */
+:root,
+[data-theme='dark'] {
+  --pro-bg: #0d0f14;
+  --pro-surface: #131620;
+  --pro-surface-muted: #1a1d28;
+  --pro-surface-raised: #1f2333;
+
+  --pro-border: rgba(255, 255, 255, 0.07);
+  --pro-border-strong: rgba(255, 255, 255, 0.14);
+  --pro-border-accent: rgba(255, 140, 0, 0.4);
+
+  --pro-text: #e8eaf0;
+  --pro-text-secondary: #9aa3b4;
+  --pro-text-muted: #5a6177;
+  --pro-text-dim: #3d4459;
+
+  --pro-accent: #ff8c00;
+  --pro-accent-hover: #ffa333;
+  --pro-accent-soft: rgba(255, 140, 0, 0.12);
+  --pro-accent-dim: rgba(255, 140, 0, 0.06);
+
+  --pro-positive: #00c47a;
+  --pro-positive-soft: rgba(0, 196, 122, 0.1);
+  --pro-negative: #ff4757;
+  --pro-negative-soft: rgba(255, 71, 87, 0.1);
+  --pro-warning: #ffa500;
+  --pro-warning-soft: rgba(255, 165, 0, 0.1);
+
+  --pro-chart: #ff8c00;
+  --pro-chart-fill: rgba(255, 140, 0, 0.08);
+  --pro-chart-index: #2a3042;
+
+  --pro-feed-exec-bg: rgba(64, 120, 255, 0.12);
+  --pro-feed-exec-fg: #6b9aff;
+  --pro-feed-id-bg: rgba(160, 80, 255, 0.12);
+  --pro-feed-id-fg: #c084fc;
+  --pro-badge-perp-bg: rgba(64, 120, 255, 0.12);
+  --pro-badge-perp-fg: #6b9aff;
+
+  --pro-focus-ring: rgba(255, 140, 0, 0.2);
+  --pro-tooltip-bg: #090b10;
+  --pro-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --pro-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+
+  --pro-radius: 3px;
+  --pro-radius-sm: 2px;
+  --pro-radius-lg: 4px;
+}
+
+/* ─── Light theme (Bloomberg Launchpad / day terminal) ─── */
+[data-theme='light'] {
+  --pro-bg: #f0ede8;
+  --pro-surface: #faf9f7;
+  --pro-surface-muted: #f0ede8;
+  --pro-surface-raised: #e8e4de;
+
+  --pro-border: rgba(0, 0, 0, 0.09);
+  --pro-border-strong: rgba(0, 0, 0, 0.18);
+  --pro-border-accent: rgba(204, 102, 0, 0.4);
+
+  --pro-text: #1a1510;
+  --pro-text-secondary: #4a4035;
+  --pro-text-muted: #8a7f72;
+  --pro-text-dim: #b0a898;
+
+  --pro-accent: #cc6600;
+  --pro-accent-hover: #b35a00;
+  --pro-accent-soft: rgba(204, 102, 0, 0.1);
+  --pro-accent-dim: rgba(204, 102, 0, 0.05);
+
+  --pro-positive: #007a4a;
+  --pro-positive-soft: rgba(0, 122, 74, 0.1);
+  --pro-negative: #cc2233;
+  --pro-negative-soft: rgba(204, 34, 51, 0.08);
+  --pro-warning: #b36200;
+  --pro-warning-soft: rgba(179, 98, 0, 0.1);
+
+  --pro-chart: #cc6600;
+  --pro-chart-fill: rgba(204, 102, 0, 0.08);
+  --pro-chart-index: #d0c8bc;
+
+  --pro-feed-exec-bg: rgba(0, 80, 200, 0.08);
+  --pro-feed-exec-fg: #0050c8;
+  --pro-feed-id-bg: rgba(100, 40, 180, 0.08);
+  --pro-feed-id-fg: #6428b4;
+  --pro-badge-perp-bg: rgba(0, 80, 200, 0.08);
+  --pro-badge-perp-fg: #0050c8;
+
+  --pro-focus-ring: rgba(204, 102, 0, 0.2);
+  --pro-tooltip-bg: #1a1510;
+  --pro-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --pro-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  --pro-radius: 3px;
+  --pro-radius-sm: 2px;
+  --pro-radius-lg: 4px;
+}
+
+/* ─── App shell ─── */
+
+.pro-app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--pro-bg);
+  color: var(--pro-text);
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+/* ─── Side navigation ─── */
+
+.pro-nav {
+  width: 52px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0 10px;
+  gap: 2px;
+  background: var(--pro-surface);
+  border-right: 1px solid var(--pro-border);
+}
+
+.pro-nav-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--pro-radius-sm);
+  background: var(--pro-accent);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.pro-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--pro-radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--pro-text-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, color 0.1s;
+}
+
+.pro-nav-btn:hover {
+  background: var(--pro-surface-muted);
+  color: var(--pro-text-secondary);
+}
+
+.pro-nav-btn--active {
+  background: var(--pro-accent-dim);
+  color: var(--pro-accent);
+  border-left: 2px solid var(--pro-accent);
+  margin-left: -1px;
+  border-radius: 0 var(--pro-radius-sm) var(--pro-radius-sm) 0;
+}
+
+/* ─── Sidebar ─── */
+
+.pro-sidebar {
+  width: 272px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--pro-surface);
+  border-right: 1px solid var(--pro-border);
+  overflow: hidden;
+}
+
+/* Inner <aside class="pro-sidebar"> (PortfolioPanel) must fill its wrapper div */
+.pro-sidebar > aside.pro-sidebar {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border-right: none;
+}
+
+/* ─── Main area ─── */
+
+.pro-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--pro-bg);
+}
+
+/* ─── Chat panel ─── */
+
+.pro-chat {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--pro-surface);
+  border-left: 1px solid var(--pro-border);
+  overflow: hidden;
+}
+
+/* Inner <aside class="pro-chat"> (ChatPanel) must fill its wrapper div */
+.pro-chat > aside.pro-chat {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border-left: none;
+}
+
+/* ─── Typography tokens ─── */
+
+.pro-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pro-accent);
+  font-family: var(--font-mono);
+}
+
+/* ─── Section dividers ─── */
+
+.pro-section {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--pro-border);
+}
+
+.pro-section:last-child {
+  border-bottom: none;
+}
+
+/* ─── Display number ─── */
+
+.pro-display {
+  font-family: var(--font-mono);
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--pro-text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  animation: glow-number 4s ease-in-out infinite;
+}
+
+@keyframes glow-number {
+  0%, 100% { text-shadow: 0 0 0px transparent; }
+  50%       { text-shadow: 0 0 18px rgba(255, 140, 0, 0.35), 0 0 40px rgba(255, 140, 0, 0.12); }
+}
+
+@keyframes glow-status {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0px transparent; }
+  50%       { opacity: 0.7; box-shadow: 0 0 6px var(--pro-positive); }
+}
+
+/* ─── Page header ─── */
+
+.pro-page-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  background: var(--pro-surface);
+  border-bottom: 1px solid var(--pro-border);
+  flex-shrink: 0;
+  min-height: 56px;
+}
+
+.pro-page-title {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--pro-text);
+  letter-spacing: -0.01em;
+}
+
+.pro-page-sub {
+  font-size: 11px;
+  color: var(--pro-text-muted);
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+/* ─── Status pill ─── */
+
+.pro-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: var(--pro-radius-sm);
+  font-size: 9px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--pro-positive-soft);
+  color: var(--pro-positive);
+  border: 1px solid rgba(0, 196, 122, 0.2);
+}
+
+.pro-status__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--pro-positive);
+  animation: glow-status 2s ease-in-out infinite;
+}
+
+/* ─── Buttons ─── */
+
+.pro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: var(--pro-radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  border: 1px solid var(--pro-border-strong);
+  background: var(--pro-surface-muted);
+  color: var(--pro-text-secondary);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+  letter-spacing: 0.02em;
+}
+
+.pro-btn:hover {
+  background: var(--pro-surface-raised);
+  border-color: var(--pro-border-strong);
+  color: var(--pro-text);
+}
+
+.pro-btn-primary {
+  background: var(--pro-accent);
+  border-color: var(--pro-accent);
+  color: #000;
+  font-weight: 700;
+}
+
+.pro-btn-primary:hover {
+  background: var(--pro-accent-hover);
+  border-color: var(--pro-accent-hover);
+}
+
+/* ─── Segmented control ─── */
+
+.pro-segment {
+  display: inline-flex;
+  padding: 2px;
+  gap: 1px;
+  background: var(--pro-bg);
+  border: 1px solid var(--pro-border);
+  border-radius: var(--pro-radius-sm);
+}
+
+.pro-segment-btn {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 1px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  color: var(--pro-text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+  text-transform: uppercase;
+}
+
+.pro-segment-btn--active {
+  background: var(--pro-accent);
+  color: #000;
+}
+
+/* ─── Cards ─── */
+
+.pro-card {
+  background: var(--pro-surface);
+  border: 1px solid var(--pro-border);
+  border-radius: var(--pro-radius);
+  padding: 16px;
+  box-shadow: none;
+}
+
+/* ─── Filter chips ─── */
+
+.pro-chip {
+  padding: 3px 9px;
+  border-radius: var(--pro-radius-sm);
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--pro-border);
+  color: var(--pro-text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.pro-chip:hover {
+  border-color: var(--pro-border-strong);
+  color: var(--pro-text-secondary);
+  background: var(--pro-surface-muted);
+}
+
+.pro-chip--active {
+  background: var(--pro-accent);
+  border-color: var(--pro-accent);
+  color: #000;
+}
+
+/* ─── Metric grid ─── */
+
+.pro-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--pro-border);
+}
+
+.pro-metric-grid .pro-metric {
+  border-right: 1px solid var(--pro-border);
+  padding: 16px 20px;
+}
+
+.pro-metric-grid .pro-metric:last-child {
+  border-right: none;
+}
+
+@media (max-width: 1200px) {
+  .pro-metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pro-metric-grid .pro-metric:nth-child(2) {
+    border-right: none;
+  }
+}
+
+.pro-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pro-metric-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pro-text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+}
+
+.pro-metric-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--pro-text);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.pro-metric-value--up {
+  color: var(--pro-positive);
+}
+
+/* ─── Activity feed rows ─── */
+
+.pro-feed-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--pro-surface);
+  border: 1px solid var(--pro-border);
+  border-radius: var(--pro-radius);
+  transition: background 0.1s, border-color 0.1s;
+  cursor: pointer;
+}
+
+.pro-feed-row:hover {
+  background: var(--pro-surface-muted);
+  border-color: var(--pro-border-strong);
+}
+
+.pro-feed-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--pro-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--pro-surface-muted);
+  color: var(--pro-text-secondary);
+}
+
+.pro-feed-icon--exec { background: var(--pro-feed-exec-bg); color: var(--pro-feed-exec-fg); }
+.pro-feed-icon--ok { background: var(--pro-positive-soft); color: var(--pro-positive); }
+.pro-feed-icon--warn { background: var(--pro-warning-soft); color: var(--pro-warning); }
+.pro-feed-icon--id { background: var(--pro-feed-id-bg); color: var(--pro-feed-id-fg); }
+
+/* ─── Position cards ─── */
+
+.pro-pos-card {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--pro-radius-sm);
+  border: 1px solid var(--pro-border);
+  border-left: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.1s, background 0.1s;
+}
+
+.pro-pos-card:hover {
+  border-color: var(--pro-border-strong);
+  border-left-color: var(--pro-text-muted);
+  background: var(--pro-surface-muted);
+}
+
+.pro-pos-card--active {
+  border-color: var(--pro-border);
+  border-left-color: var(--pro-accent) !important;
+  background: var(--pro-accent-dim);
+}
+
+/* ─── Type badges ─── */
+
+.pro-badge {
+  font-size: 9px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  padding: 2px 5px;
+  border-radius: var(--pro-radius-sm);
+  text-transform: uppercase;
+}
+
+.pro-badge-lp { background: var(--pro-positive-soft); color: var(--pro-positive); }
+.pro-badge-perp { background: var(--pro-badge-perp-bg); color: var(--pro-badge-perp-fg); }
+.pro-badge-rwa { background: var(--pro-warning-soft); color: var(--pro-warning); }
+
+/* ─── Scroll containers ─── */
+
+.pro-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* ─── Color utilities ─── */
+
+.pro-positive { color: var(--pro-positive); }
+.pro-negative { color: var(--pro-negative); }
+
+/* ─── Allocation bar ─── */
+
+.pro-alloc-bar {
+  display: flex;
+  height: 4px;
+  gap: 1px;
+  overflow: hidden;
+  background: var(--pro-border);
+}
+
+.pro-alloc-seg {
+  height: 100%;
+}
+
+/* ─── Chat ─── */
+
+.pro-chat-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--pro-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background: var(--pro-surface);
+}
+
+.pro-chat-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--pro-radius-sm);
+  background: var(--pro-accent);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+.pro-bubble-agent {
+  max-width: 240px;
+  padding: 11px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--pro-surface-muted);
+  border: 1px solid var(--pro-border);
+  border-radius: 2px 6px 6px 6px;
+  color: var(--pro-text);
+}
+
+.pro-bubble-user {
+  max-width: 240px;
+  padding: 11px 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  background: var(--pro-accent-soft);
+  border: 1px solid var(--pro-border-accent);
+  border-radius: 6px 2px 6px 6px;
+  color: var(--pro-text);
+}
+
+.pro-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid var(--pro-border);
+  border-radius: var(--pro-radius-sm);
+  background: var(--pro-bg);
+  transition: border-color 0.1s, box-shadow 0.1s;
+}
+
+.pro-input-wrap:focus-within {
+  border-color: var(--pro-accent);
+  box-shadow: 0 0 0 2px var(--pro-focus-ring);
+}
+
+.pro-input-wrap input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  color: var(--pro-text);
+  outline: none;
+  min-width: 0;
+}
+
+.pro-input-wrap input::placeholder {
+  color: var(--pro-text-muted);
+}
+
+.pro-send {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--pro-radius-sm);
+  border: none;
+  background: var(--pro-accent);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.1s;
+}
+
+.pro-send:hover {
+  background: var(--pro-accent-hover);
+}
+
+/* ─── Settings ─── */
+
+.pro-theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--pro-radius);
+  border: 1px solid var(--pro-border);
+  background: var(--pro-surface-muted);
+}
+
+.pro-theme-options {
+  display: inline-flex;
+  padding: 2px;
+  gap: 1px;
+  background: var(--pro-bg);
+  border: 1px solid var(--pro-border);
+  border-radius: var(--pro-radius-sm);
+}
+
+.pro-theme-option {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 1px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pro-text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.pro-theme-option--active {
+  background: var(--pro-accent);
+  color: #000;
+}
+
+/* ─── Scrollbar ─── */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pro-border-strong);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pro-text-muted);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   MOBILE RESPONSIVE — full overhaul for screens < 768px
+   Strategy: bottom tab bar, single panel visible at a time
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Mobile bottom tab bar */
+.pro-mobile-tabs {
+  display: none;
+}
+
+/* More menu inherits display:none on desktop even with inline style */
+.pro-more-menu {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  /* ── Shell ── */
+  .pro-app {
+    flex-direction: column;
+    height: 100dvh; /* dynamic viewport height — handles mobile browser chrome */
+    overflow: hidden;
+  }
+
+  /* ── Hide desktop panels by default on mobile ── */
+  .pro-nav,
+  .pro-sidebar {
+    display: none !important;
+  }
+
+  /* ── Main area fills available space ── */
+  .pro-main {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  /* ── Chat panel: hidden by default, shown when active ── */
+  .pro-chat {
+    display: none;
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--pro-border);
+  }
+
+  .pro-chat--mobile-active {
+    display: flex !important;
+    flex: 1;
+    width: 100%;
+  }
+
+  /* Inner aside also carries pro-chat class — unhide it when wrapper is active */
+  .pro-chat--mobile-active .pro-chat {
+    display: flex !important;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+  }
+
+  /* ── Portfolio sidebar: hidden by default, shown when active ── */
+  .pro-sidebar--mobile-active {
+    display: flex !important;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    border-right: none;
+    border-top: 1px solid var(--pro-border);
+  }
+
+  /* Inner aside also carries pro-sidebar class — unhide it when wrapper is active */
+  .pro-sidebar--mobile-active .pro-sidebar {
+    display: flex !important;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+  }
+
+  /* ── Make main views fill screen ── */
+  .pro-main--mobile-hidden {
+    display: none !important;
+  }
+
+  /* ── Bottom tab bar & More menu (mobile only) ── */
+  .pro-more-menu {
+    display: flex !important;
+  }
+
+  .pro-mobile-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 56px;
+    flex-shrink: 0;
+    background: var(--pro-surface);
+    border-top: 1px solid var(--pro-border);
+    padding: 0 4px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .pro-mobile-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--pro-text-muted);
+    cursor: pointer;
+    transition: color 0.1s;
+    padding: 4px 0;
+  }
+
+  .pro-mobile-tab--active {
+    color: var(--pro-accent);
+  }
+
+  .pro-mobile-tab__label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Shrink dense elements on small screens ── */
+  .pro-page-header {
+    padding: 10px 16px;
+    min-height: 48px;
+  }
+
+  .pro-page-title {
+    font-size: 15px;
+  }
+
+  .pro-metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pro-metric-grid .pro-metric:nth-child(2) {
+    border-right: none;
+  }
+
+  .pro-display {
+    font-size: 26px;
+  }
+
+  /* ── Chat bubbles full width on mobile ── */
+  .pro-bubble-agent,
+  .pro-bubble-user {
+    max-width: 85vw;
+  }
+
+  /* ── Metric value smaller ── */
+  .pro-metric-value {
+    font-size: 17px;
+  }
+
+  /* ── Section padding tighter ── */
+  .pro-section {
+    padding: 12px 14px;
+  }
+}
+
+/* Tablet: 768–1023px — show nav + main, hide sidebar and chat by default */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .pro-sidebar {
+    width: 220px;
+  }
+
+  .pro-chat {
+    width: 280px;
+  }
+}
+
+/* Desktop narrow: hide chat panel, keep everything else */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .pro-chat {
+    width: 280px;
+  }
+
+  .pro-sidebar {
+    width: 240px;
+  }
+}
