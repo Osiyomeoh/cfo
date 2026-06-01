@@ -193,15 +193,16 @@ lib/
 
 Built for **Turing Test Hackathon 2026** — Mantle Network track.
 
-**What makes this "undeniable":**
-- ✅ Real swaps on Mantle mainnet via OpenOcean (not simulated)
-- ✅ Real yield data from Mantle LSP API and Lendle
-- ✅ Real on-chain agent NFT with verifiable reputation (ERC-8004)
-- ✅ Autonomous AI proposals responding to live market conditions
-- ✅ Browser push notifications for price alerts
-- ✅ Bloomberg Terminal aesthetic — looks and feels professional
-- ✅ Complete DeFi education (Learn tab) for new users
-- ✅ Referral system with fee incentives
+### Highlights
+
+- Real token swaps on Mantle mainnet via OpenOcean DEX aggregator
+- Live yield data sourced directly from Mantle LSP API and Lendle protocol
+- On-chain agent NFT with verifiable execution history (ERC-8004)
+- Autonomous AI proposals triggered by live market conditions
+- Browser push notifications for significant price movements
+- Bloomberg Terminal-inspired UI designed for clarity and speed
+- Built-in DeFi education (Learn tab) for users new to on-chain finance
+- Referral system with fee discounts for referred users
 
 ---
 
